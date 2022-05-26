@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			jump = true;
 		}
-
+/*
 		if (Input.GetButtonDown("Crouch"))
 		{
 			crouch = true;
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			crouch = false;
 		}
-
+*/
 	}
 
 	void FixedUpdate ()
