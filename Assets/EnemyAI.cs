@@ -25,6 +25,10 @@ public class EnemyAI : MonoBehaviour {
     public float nextWaypointDistance = 3;
 
     private int currentWaypoint = 0;
+    public int maxHealth = 100;
+	public int currentHealth;
+
+	public HealthBar healthBar;
 
     void Start() {
         seeker = GetComponent<Seeker>();
@@ -61,6 +65,13 @@ public class EnemyAI : MonoBehaviour {
             currentWaypoint = 0;
         }
     }
+
+    void TakeDamage(int damage)
+	{
+		currentHealth -= damage;
+
+		healthBar.SetHealth(currentHealth);
+	}
 
     void FixedUpdate (){
         if (target == null){

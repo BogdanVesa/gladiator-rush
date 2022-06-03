@@ -438,6 +438,7 @@ GameObject:
   - component: {fileID: 666585699}
   - component: {fileID: 666585698}
   - component: {fileID: 666585700}
+  - component: {fileID: 666585701}
   m_Layer: 3
   m_Name: HeroKnight_0
   m_TagString: Untagged
@@ -575,6 +576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 666585699}
   runSpeed: 40
+  animator: {fileID: 666585701}
 --- !u!114 &666585699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -590,16 +592,28 @@ MonoBehaviour:
   m_JumpForce: 800
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
-  m_AirControl: 0
+  m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 192
   m_GroundCheck: {fileID: 134322088}
   m_CeilingCheck: {fileID: 1821568458}
   m_CrouchDisableCollider: {fileID: 0}
   OnLandEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 666585698}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnLanding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -618,6 +632,26 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 1005455574}
+--- !u!95 &666585701
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666585691}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3cdd5dff7eeacda44af1ff0cc801009a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &695908079
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,7 +662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 695908081}
   - component: {fileID: 695908080}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -891,6 +925,9 @@ MonoBehaviour:
   speed: 300
   fMode: 0
   nextWaypointDistance: 3
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 0}
 --- !u!114 &787595943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1132,7 +1169,7 @@ GameObject:
   - component: {fileID: 1453052413}
   - component: {fileID: 1453052412}
   - component: {fileID: 1453052411}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
