@@ -12,8 +12,13 @@ TagManager:
   - Water
   - UI
   - Enemy
+<<<<<<< Updated upstream
   - 
   - 
+=======
+  - Ground
+  - Background
+>>>>>>> Stashed changes
   - 
   - 
   - 
@@ -40,6 +45,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 775882303
     locked: 0
   - name: UI
     uniqueID: 2603806573
