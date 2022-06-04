@@ -13,6 +13,11 @@ public class PlayerMovement : MonoBehaviour
 	bool crouch = false;
 	
 	public Animator animator;
+
+	public Transform attackPoint;
+	public float attackRange = 0.5f;
+	public int attackDamage = 50;
+	public LayerMask enemyLayers;
 	
 	// Update is called once per frame
 	void Update () {
@@ -29,6 +34,11 @@ public class PlayerMovement : MonoBehaviour
 			animator.SetBool("IsJumping",true);
 		}
 
+		if (Input.GetKeyDown(KeyCode.X))
+		{
+			Attack();
+		}
+
 		// if (Input.GetButtonDown("Crouch"))
 		// {
 		// 	crouch = true;
@@ -37,6 +47,25 @@ public class PlayerMovement : MonoBehaviour
 		// 	crouch = false;
 		// }
 
+	}
+
+	void Attack(){
+		animator.SetTrigger("Attack");
+
+		Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange,enemyLayers);
+
+		foreach (Collider2D enemy in hitEnemies)
+		{
+			enemy.GetComponent<EnemyAI>().TakeDamage(attackDamage);
+		}
+
+	}
+
+	void OnDrawGizmosSelected(){
+		if(attackPoint == null)
+			return;
+		
+		Gizmos.DrawWireSphere(attackPoint.position, attackRange);
 	}
 
 	public void OnLanding(){
